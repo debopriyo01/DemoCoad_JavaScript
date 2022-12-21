@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="timeout.css">
+</head>
+
+<body>
+
+
+    <div class="SubDiv">
+
+        
+            <h3>click Image to start the Timer(12 sec)</h3>
+            <img src="C:\Users\user\OneDrive\Pictures\Saved Pictures\90278 (1).webp" onclick='CountDown()';>
+            <article id="Time_box">
+            <h3>Time left</h3><br>
+            <input id="Sec" type="text" readonly>
+            <p id="MSG"></p>
+        </article>
+ </div>
+</body>
+</html>
+
+<script>
+
+var time = 12;
+var flag = true;
+function CountDown() {
+
+    if (flag == false) {
+
+        Decrement();
+        flag = true;
+    }
+}
+
+function Decrement() {
+
+    secends = document.getElementById("Sec");
+    secends.value=time;
+ 
+
+    if (time < 10) {
+
+        secends.style.color = "red";
+        secends.style.fontSize = "60px";
+        document.getElementById("MSG").innerHTML = "Hurry Up!"
+    } 
+     if (time < 0) {
+
+        alert("Time is Over!");
+        document.getElementById("Time_box").innerHTML = "<b>Time over</b>";
+    } 
+    else {
+        time--;
+        /*Hear we need to call The Set 
+       }time out Funtion :-*/
+
+        setTimeout(Decrement(), 1000);// The Recursive Funtion Will be Calling after 1 sec:-
+
+
+    }
+}
+</script>
